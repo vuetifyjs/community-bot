@@ -1,0 +1,29 @@
+{
+  "name": "VuetifyBot",
+  "version": "1.0.0",
+  "description": "A chat bot for the Vuetify Discord channel.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bkpratt84/VuetifyBot.git"
+  },
+  "author": "",
+  "credit": [
+    "Forked from: https://github.com/An-Idiots-Guide/guidebot.git"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^11.2.1",
+    "enmap": "^0.4.1",
+    "enmap-level": "^1.0.0",
+    "moment": "^2.18.1",
+    "moment-duration-format": "^2.0.1"
+  }
+}
