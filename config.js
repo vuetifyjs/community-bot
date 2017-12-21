@@ -17,7 +17,7 @@ const config = {
   // VIA COMMANDS IN THE GUILD.
   
   "defaultSettings": {
-    "prefix": "-",
+    "prefix": "!",
     "helpChannel": "need-help",
     "bugChannel": "bugs",
     "modLogChannel": "mod-log",
