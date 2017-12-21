@@ -1,21 +1,18 @@
 // This event executes when a new member joins a server. Let's welcome them!
 
 module.exports = (client, member) => {
-  const vuetifyURL = "https://vuetifyjs.com/";
-
   const settings = client.settings.get(member.guild.id);
 
   // If welcome is off, don't proceed (don't welcome the user)
   if (settings.welcomeEnabled !== "true") return;
 
-  console.log("codepen: " + settings.codepenURL);
   const message = {
     embed: {
       color: 3447003,
       title: `${member.displayName}, Welcome to the Vuetify Discord Channel!`,
       author: {
         name: "Vuetify Dev Team",
-        url: vuetifyURL
+        url: settings.vuetifyURL
       },
       description: "Here are some helpful tips to get the most out of this channel.",
       fields: [

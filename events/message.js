@@ -19,7 +19,35 @@ module.exports = (client, message) => {
 
   // Also good practice to ignore any message that does not start with our prefix,
   // which is set in the configuration file.
-  if (message.content.indexOf(settings.prefix) !== 0) return;
+  if (message.content.indexOf(settings.prefix) !== 0) {
+    const keywords = settings.helpKeywords;
+    const helpChannel = settings.helpChannel;
+    const bugChannel = settings.bugChannel;
+    const helpChannelID = message.guild.channels.find('name', helpChannel);
+    const bugChannelID = message.guild.channels.find('name', bugChannel);
+
+    if (!helpChannelID || !bugChannelID) return;
+
+    let msgWrongChannel = `It looks like you asked a question, but may be in the wrong channel. For help go to <#${helpChannelID.id}>, to report a bug, go to <#${bugChannelID.id}>.`;
+    let msgReproduction = `It looks like you asked a question but did not provide a reproduction environment. You can create one at <${settings.codepenURL}>.`;
+
+    let found = false;
+    let rx = new RegExp("([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?(/.*)?");
+  
+    if (keywords.some(keyword => message.content.includes(keyword))) found = true;
+
+    if (found) {
+      if (message.channel.name === helpChannel) {
+        if (!rx.test(message.content)) {
+          message.reply(msgReproduction);
+        }
+      } else {
+        message.reply(msgWrongChannel);
+      }
+    }
+
+    return;
+  }
 
   // Here we separate our "command" name, and our "arguments" for the command.
   // e.g. if we have the message "+say Is this the real life?" , we'll get the following:
@@ -34,9 +62,12 @@ module.exports = (client, message) => {
   // Check whether the command, or alias, exist in the collections defined
   // in app.js.
   const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
-  // using this const varName = thing OR otherthign; is a pretty efficient
+  // using this const varName = thing OR otherthing; is a pretty efficient
   // and clean way to grab one of 2 values!
   if (!cmd) return;
+
+  // Check if cmd is enabled
+  if (!cmd.conf.enabled) return;
 
   // Some commands may not be useable in DMs. This check prevents those commands from running
   // and return a friendly error message.
@@ -61,6 +92,7 @@ module.exports = (client, message) => {
   while (args[0] && args[0][0] === "-") {
     message.flags.push(args.shift().slice(1));
   }
+
   // If the command exists, **AND** the user has permission, run it.
   client.log("log", `${client.config.permLevels.find(l => l.level === level).name} ${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "CMD");
   cmd.run(client, message, args, level);
