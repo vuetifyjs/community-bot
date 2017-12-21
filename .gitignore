@@ -7,6 +7,7 @@ yarn-error.log*
 config.json
 data/
 test.js
+now-secrets.json
 
 # Runtime data
 pids

@@ -19,8 +19,11 @@ In a command prompt in your projects folder (wherever that may be) run the follo
 Once finished: 
 
 - In the folder from where you ran the git command, run `cd guidebot` and then run `npm install`
-- Rename or copy `config.js.example` to `config.js`
 - Edit `config.js` and fill in all the relevant details as indicated in the file's comments.
+- Rename now-secrets.json.example to now-secrets.json and add your bots token. (Only used for local deploy)
+
+## Deploy to Zeit
+- Add secret key with the command: `now secret add bot-token TOKEN HERE`
 
 ## Starting the bot
 

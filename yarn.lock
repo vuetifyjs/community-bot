@@ -16,10 +16,6 @@ discord.js@^11.2.1:
     tweetnacl "^1.0.0"
     ws "^3.1.0"
 
-dotenv@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
-
 enmap@^0.4.1:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/enmap/-/enmap-0.4.2.tgz#252617e1c07927b8d941d909bef00c455758bf94"
@@ -35,6 +31,10 @@ moment-duration-format@^2.0.1:
 moment@^2.18.1:
   version "2.19.4"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.4.tgz#17e5e2c6ead8819c8ecfad83a0acccb312e94682"
+
+now-env@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/now-env/-/now-env-3.0.2.tgz#b0725023a799240c5c7e4a43515eb0a65c2c3663"
 
 prism-media@^0.0.1:
   version "0.0.1"

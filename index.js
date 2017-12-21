@@ -3,7 +3,7 @@
 // you.
 if (process.version.slice(1).split(".")[0] < 8) throw new Error("Node 8.0.0 or higher is required. Update Node on your system.");
 
-require('dotenv').config();
+require('now-env');
 
 // Load up the discord.js library
 const Discord = require("discord.js");
@@ -73,7 +73,7 @@ const init = async () => {
   }
 
   // Here we login the client.
-  client.login(process.env.botToken);
+  client.login(process.env.BOT_TOKEN);
 
 // End top-level async/await function.
 };

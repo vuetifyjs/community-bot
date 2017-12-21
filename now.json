@@ -1,0 +1,5 @@
+{
+    "env": {
+      "BOT_TOKEN": "@bot-token"
+    }
+}
