@@ -21,6 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "discord.js": "^11.2.1",
+    "dotenv": "^4.0.0",
     "enmap": "^0.4.1",
     "enmap-level": "^1.0.0",
     "moment": "^2.18.1",
