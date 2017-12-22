@@ -7,6 +7,8 @@ exports.run = async (client, message, args, level) => {
     } else {
         msg = `Please provide a reproduction environment.`;
     }
+
+    msg += ` You can find a codepen template at <${client.config.defaultSettings.codepenURL}>.`
     
     message.delete()
         .catch(client.log("log", "No permission to delete message", "Command"));
