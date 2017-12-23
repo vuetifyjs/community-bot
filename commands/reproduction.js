@@ -10,7 +10,7 @@ exports.run = async (client, message, args, level) => {
 
     msg += ` You can find a codepen template at <${client.config.defaultSettings.codepenURL}>.`
     
-    if (message.guild.me.hasPermission('MANAGE_MESSAGES')) {
+    if (client.config.defaultSettings.allowDeleteMessages === "true" && message.guild.me.hasPermission('MANAGE_MESSAGES')) {
         message.delete()
             .catch(err => {
                 client.log("error", err, " Repro Command")

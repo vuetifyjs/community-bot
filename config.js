@@ -28,7 +28,8 @@ const config = {
     "vuetifyURL": "https://vuetifyjs.com/",
     "codepenURL": "https://template.vuetifyjs.com/",
     "issueTrackerURL": "https://issues.vuetifyjs.com/",
-    "helpKeywords": ["help", "please", "why"]
+    "helpKeywords": ["help", "please", "why"],
+    "allowDeleteMessages": "false"
   },
 
   // PERMISSION LEVEL DEFINITIONS.
