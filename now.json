@@ -1,5 +1,5 @@
 {
-  "alias": "bot.vuetify.com",
+  "alias": "bot.vuetifyjs.com",
   "env": {
     "BOT_TOKEN": "@bot-token"
   }
