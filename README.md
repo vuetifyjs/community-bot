@@ -24,6 +24,7 @@ Once finished:
 
 ## Deploy to Zeit
 - Add secret key with the command: `now secret add bot-token TOKEN HERE`
+- If alias already exists, run: `now` else run: `npm run alias`
 
 ## Starting the bot
 
