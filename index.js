@@ -42,11 +42,12 @@ client.aliases = new Enmap();
 // client.settings = new Enmap({provider: new EnmapLevel({name: "settings"})});
 client.settings = new Enmap();
 
+client.lastMessage = null;
+
 // We're doing real fancy node 8 async/await stuff here, and to do that
 // we need to wrap stuff in an anonymous function. It's annoying but it works.
 
 const init = async () => {
-
   // Here we load **commands** into memory, as a collection, so they're accessible
   // here and everywhere else.
   const cmdFiles = await readdir("./commands/");

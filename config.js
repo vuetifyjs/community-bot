@@ -29,6 +29,7 @@ const config = {
     "codepenURL": "https://template.vuetifyjs.com/",
     "issueTrackerURL": "https://issues.vuetifyjs.com/",
     "helpKeywords": ["help", "please", "why"],
+    "helpTimeout": "5",
     "allowDeleteMessages": "false"
   },
 

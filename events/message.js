@@ -3,6 +3,8 @@
 // goes `client, other, args` when this function is run.
 
 module.exports = (client, message) => {
+  if (!client.lastMessage) client.lastMessage = new Date();
+
   // It's good practice to ignore other bots. This also makes your bot ignore itself
   // and not get into a spam loop (we call that "botception").
   if (message.author.bot) return;
@@ -20,6 +22,13 @@ module.exports = (client, message) => {
   // Also good practice to ignore any message that does not start with our prefix,
   // which is set in the configuration file.
   if (message.content.indexOf(settings.prefix) !== 0) {
+    //Return if message is from anyone with an permission level higher than a user.
+    if (client.permlevel(message) > 0) return;
+
+    //Check if the difference between the last help message and message is greater than time in config.js
+    let diff = Math.floor((message.createdTimestamp - client.lastMessage) / 1000);
+    if (diff > 0 && diff < (settings.helpTimeout * 60)) return;
+
     const keywords = settings.helpKeywords;
     const helpChannel = settings.helpChannel;
     const bugChannel = settings.bugChannel;
@@ -36,6 +45,7 @@ module.exports = (client, message) => {
   
     if (keywords.some(keyword => message.content.includes(keyword))) found = true;
 
+ 
     if (found) {
       if (message.channel.name === helpChannel || message.channel.name === bugChannel) {
         if (!rx.test(message.content)) {
@@ -44,6 +54,8 @@ module.exports = (client, message) => {
       } else {
         message.reply(msgWrongChannel);
       }
+  
+      client.lastMessage = message.createdTimestamp;
     }
 
     return;
@@ -77,8 +89,8 @@ module.exports = (client, message) => {
   if (level < client.levelCache[cmd.conf.permLevel]) {
     if (settings.systemNotice === "true") {
       return message.channel.send(`You do not have permission to use this command.
-  Your permission level is ${level} (${client.config.permLevels.find(l => l.level === level).name})
-  This command requires level ${client.levelCache[cmd.conf.permLevel]} (${cmd.conf.permLevel})`);
+            Your permission level is ${level} (${client.config.permLevels.find(l => l.level === level).name})
+            This command requires level ${client.levelCache[cmd.conf.permLevel]} (${cmd.conf.permLevel})`);
     } else {
       return;
     }

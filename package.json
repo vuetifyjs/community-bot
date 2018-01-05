@@ -1,5 +1,5 @@
 {
-  "name": "VuetifyBot",
+  "name": "vuetifybot",
   "version": "1.0.0",
   "description": "A chat bot for the Vuetify Discord channel.",
   "main": "index.js",
