@@ -4,6 +4,9 @@
 if (process.version.slice(1).split(".")[0] < 8) throw new Error("Node 8.0.0 or higher is required. Update Node on your system.");
 
 require('now-env');
+const express = require('express');
+const app = express();
+const router = express.Router();
 
 // Load up the discord.js library
 const Discord = require("discord.js");
@@ -79,3 +82,19 @@ const init = async () => {
 };
 
 init();
+
+router.get('*', function (req, res) {
+  res.status(404).json({
+      title: '404',
+      status: false,
+      error: 'Route does not exist.'
+  });
+});
+
+app.use('/', router);
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, function () {
+  console.log('Server started at http://localhost:' + port);
+});

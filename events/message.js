@@ -37,7 +37,7 @@ module.exports = (client, message) => {
     if (keywords.some(keyword => message.content.includes(keyword))) found = true;
 
     if (found) {
-      if (message.channel.name === helpChannel) {
+      if (message.channel.name === helpChannel || message.channel.name === bugChannel) {
         if (!rx.test(message.content)) {
           message.reply(msgReproduction);
         }
