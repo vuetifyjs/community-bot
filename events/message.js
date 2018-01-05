@@ -23,13 +23,14 @@ module.exports = (client, message) => {
   // which is set in the configuration file.
   if (message.content.indexOf(settings.prefix) !== 0) {
     //Return if message is from anyone with an permission level higher than a user.
-    if (client.permlevel(message) > 0) return;
+    //if (client.permlevel(message) > 0) return;
 
     //Check if the difference between the last help message and message is greater than time in config.js
     let diff = Math.floor((message.createdTimestamp - client.lastMessage) / 1000);
     if (diff > 0 && diff < (settings.helpTimeout * 60)) return;
 
     const keywords = settings.helpKeywords;
+    const ignoreWords = settings.ignoreHelpKeywords;
     const helpChannel = settings.helpChannel;
     const bugChannel = settings.bugChannel;
     const helpChannelID = message.guild.channels.find('name', helpChannel);
@@ -42,9 +43,15 @@ module.exports = (client, message) => {
 
     let found = false;
     let rx = new RegExp("([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?(/.*)?");
-  
-    if (keywords.some(keyword => message.content.includes(keyword))) found = true;
 
+    //Remove non alphaumeric characters
+    let rxMessage = message.content.replace(/[^\w]/g, "");
+
+    //Look for help keywords, if found, set found to true
+    if (keywords.some(keyword => rxMessage.includes(keyword))) found = true;
+
+    //Look for ignore help keywords, if found, set found to false
+    //if (ignoreWords.some(keyword => rxMessage.includes(keyword))) found = false;
  
     if (found) {
       if (message.channel.name === helpChannel || message.channel.name === bugChannel) {

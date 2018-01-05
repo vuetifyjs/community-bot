@@ -28,7 +28,9 @@ const config = {
     "vuetifyURL": "https://vuetifyjs.com/",
     "codepenURL": "https://template.vuetifyjs.com/",
     "issueTrackerURL": "https://issues.vuetifyjs.com/",
-    "helpKeywords": ["help", "please", "why"],
+    "helpKeywords": ["please", "can someone help", "please help", "i need help", "need help", "help I dont understand", "help me understand"],
+    "helpKeywordsOld": ["help", "please", "why"],
+    "ignoreHelpKeywords": ["thanks for the help", "thanks for helping"],
     "helpTimeout": "5",
     "allowDeleteMessages": "false"
   },
