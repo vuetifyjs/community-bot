@@ -16,7 +16,7 @@ exports.run = async (client, message, args, level) => {
                 client.log("error", err, " Repro Command")
             });
     } else {
-        client.log("log", "No permission to delete message", "Command");
+        if (client.config.defaultSettings.allowDeleteMessages === "true") client.log("log", "No permission to delete message", "Command");
     }
 
     message.channel.send(msg);
