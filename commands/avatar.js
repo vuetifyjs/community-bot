@@ -18,7 +18,7 @@ exports.run = async (client, message, args, level) => {
         if (client.config.defaultSettings.allowDeleteMessages === "true") client.log("log", "No permission to delete message", "Command");
     }
 
-    message.channel.send(msg);
+    message.channel.send(msg).catch(console.error);
   };
   
   exports.conf = {
