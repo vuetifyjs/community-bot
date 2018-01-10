@@ -23,7 +23,7 @@ module.exports = (client, message) => {
   // which is set in the configuration file.
   if (message.content.indexOf(settings.prefix) !== 0) {
     //Return if message is from anyone with an permission level higher than a user.
-    //if (client.permlevel(message) > 0) return;
+    if (settings.whitelist === "true"  && client.permlevel(message) > 0) return;
 
     //Check if the difference between the last help message and message is greater than time in config.js
     let diff = Math.floor((message.createdTimestamp - client.lastMessage) / 1000);

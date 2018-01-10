@@ -32,7 +32,8 @@ const config = {
     "helpKeywordsOld": ["help", "please", "why"],
     "ignoreHelpKeywords": ["thanks for the help", "thanks for helping"],
     "helpTimeout": "5",
-    "allowDeleteMessages": "false"
+    "allowDeleteMessages": "false",
+    "whitelist": "true"
   },
 
   // PERMISSION LEVEL DEFINITIONS.
