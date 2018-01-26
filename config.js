@@ -22,7 +22,7 @@ const config = {
     "bugChannel": "bugs",
     "modLogChannel": "mod-log",
     "modRole": "Moderator",
-    "devRole": "Dev Team",
+    "devRole": "Developer",
     "adminRole": "Administrator",
     "welcomeEnabled": "true",
     "vuetifyURL": "https://vuetifyjs.com/",

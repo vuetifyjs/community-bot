@@ -3,6 +3,9 @@
 // goes `client, other, args` when this function is run.
 
 module.exports = (client, message) => {
+  //Exit if message is null
+  if (!message) return;
+
   if (!client.lastMessage) client.lastMessage = new Date();
 
   // It's good practice to ignore other bots. This also makes your bot ignore itself
