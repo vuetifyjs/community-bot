@@ -5,7 +5,7 @@
 module.exports = (client, message) => {
   //Exit if message is null
   if (!message) return;
-
+  
   if (!client.lastMessage) client.lastMessage = new Date();
 
   // It's good practice to ignore other bots. This also makes your bot ignore itself
@@ -36,10 +36,11 @@ module.exports = (client, message) => {
     const ignoreWords = settings.ignoreHelpKeywords;
     const helpChannel = settings.helpChannel;
     const bugChannel = settings.bugChannel;
+
+    if (!message.guild.channels) return;
+
     const helpChannelID = message.guild.channels.find('name', helpChannel);
     const bugChannelID = message.guild.channels.find('name', bugChannel);
-
-    if (!helpChannelID || !bugChannelID) return;
 
     let msgWrongChannel = `It looks like you asked a question, but may be in the wrong channel. For help go to <#${helpChannelID.id}>, to report a bug, go to <#${bugChannelID.id}>.`;
     let msgReproduction = `It looks like you asked a question but did not provide a reproduction environment. You can create one at <${settings.codepenURL}>.`;
@@ -48,14 +49,14 @@ module.exports = (client, message) => {
     let rx = new RegExp("([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?(/.*)?");
 
     //Remove non alphaumeric characters
-    let rxMessage = message.content.replace(/[^\w]/g, "");
+    let rxMessage = message.content.replace(/\s{2,}/g, " ");
 
     //Look for help keywords, if found, set found to true
     if (keywords.some(keyword => rxMessage.includes(keyword))) found = true;
 
     //Look for ignore help keywords, if found, set found to false
     //if (ignoreWords.some(keyword => rxMessage.includes(keyword))) found = false;
- 
+
     if (found) {
       if (message.channel.name === helpChannel || message.channel.name === bugChannel) {
         if (!rx.test(message.content)) {
