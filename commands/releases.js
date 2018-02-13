@@ -2,7 +2,7 @@ exports.run = async (client, message) => {
     const msg = {
         embed: {
           color: 3447003,
-          description: `Please create a bug report using the [Vuetify Issue Tracker](${client.config.defaultSettings.issueTrackerURL}).`
+          description: `You can find the release notes at <${client.config.defaultSettings.releaseNotesURL}>.`
         }
       }
 
@@ -12,14 +12,14 @@ exports.run = async (client, message) => {
   exports.conf = {
     enabled: true,
     guildOnly: true,
-    aliases: ["i", "bug"],
+    aliases: ["rel"],
     permLevel: "Moderator"
   };
   
   exports.help = {
-    name: "issue",
+    name: "release",
     category: "Mod",
-    description: "Provide the link to the Vuetify issue tracker.",
-    usage: "issue"
+    description: "Provide the link to the Vuetify release notes.",
+    usage: "release"
   };
   
