@@ -19,16 +19,13 @@ exports.run = async (client, message, args, level) => {
         if (client.config.defaultSettings.allowDeleteMessages === "true") client.log("log", "No permission to delete message", "Command");
     }
 
-    let channelID;
+    let channelID = args[1].replace(/[#<>]/gi, '');
+    let channel = client.channels.get(channelID);
 
-    if (args[1]) {
-        channelID = message.guild.channels.find('name', args[1]);
-    }
-
-    if (channelID) {
-        channelID.send(msg);
+    if (channel) {
+        channel.send(msg).catch(console.error);
     } else {
-        message.channel.send(msg);
+        message.channel.send(msg).catch(console.error);
     }
   };
   
