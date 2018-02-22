@@ -4,10 +4,14 @@ env:
   global:
   - secure: fqRfHsZtZVG9a4RPewoIOzLw3kEn4wHMMwAd6zvHUaEKDFnuQ0N/PjUDiPZ8Ff3yPwe5fxgpG96PBarxc3G/jJy9yXscg2eoZtoLC1hrSeJyaHbfNPJI6LwKyaKCIhO6Elf5A8su8Eo84lujZO2z2R+ZgR/Zkd7yjW2kO173p9A7nOQvZKpttj9u+lKHoLDfohUI29p2ee+F9cZxaWZ/3sgQt52F/qRpI+YOx5dhQlANv5Ut9Mw1+rTvg1prpChpiHaq6Cvd0YD/yYkJenaSvgsdVn/FkjWbzYCJjFYxavOouxcSOhZ7aI/tBdMuowqHEIRMZ4FpMiAsYmbrij3OzjRaoFhfbd2vaqtAYwa80r1dIwA4w0qkH0MnfnNXVyktNBOLtg7oLPB8eSpsWfxJAJ+lIEpy75cEQ4wFwkFmjmODNFBq/HZiXgSG+H8wXFuOD5DM+KXnpdBkvCvuOlYJxdNolEVgLtn20pSI8tBYBp3VfhJIOhBfTdnKsTg7kRVZauMqQ6Qwmc47F+z7kE1ElUciwfSnjrqh5oMQgcf3zAlK11jtrOrCN91DRXCkxL2IxLx7GHYIw0QRWGev5/OuP17OpnINvbOKRd2OiRQxtf427vLikxNiNvFXj+HzNC+wA4M3jFcOhy2h/K6CXIHjGFUjVlFsVbi6IUVhSjRLyOg=
 install:
-- npm install now -g
+  - npm install now -g
 script:
-- yarn run scale-down
-- yarn run deploy
-- yarn run alias
-- yarn run scale-up
-- yarn run unalias
+  - yarn run scale-down
+  - yarn run deploy
+  - yarn run alias
+  - yarn run scale-up
+  - yarn run unalias
+# whitelist
+branches:
+  only:
+    - master
