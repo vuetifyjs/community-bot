@@ -18,7 +18,7 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: "Administrator"
+  permLevel: "communityMgrRole"
 };
 
 exports.help = {

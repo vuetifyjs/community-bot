@@ -24,6 +24,7 @@ const config = {
     "modRole": "Moderator",
     "devRole": "Developer",
     "adminRole": "Administrator",
+    "communityMgrRole": "Community Mgr",
     "welcomeEnabled": "true",
     "vuetifyURL": "https://vuetifyjs.com/",
     "codepenURL": "https://template.vuetifyjs.com/",
@@ -48,7 +49,7 @@ const config = {
     },
 
     // This is your permission level, the staff levels should always be above the rest of the roles.
-    { level: 2,
+    { level: 1,
       // This is the name of the role.
       name: "Moderator",
       // The following lines check the guild the message came from for the roles.
@@ -59,6 +60,18 @@ const config = {
         try {
           const modRole = message.guild.roles.find(r => r.name.toLowerCase() === message.settings.modRole.toLowerCase());
           return (modRole && message.member.roles.has(modRole.id));
+        } catch (e) {
+          return false;
+        }
+      }
+    },
+
+    { level: 2,
+      name: "CommunityManager", 
+      check: (message) => {
+        try {
+          const devRole = message.guild.roles.find(r => r.name.toLowerCase() === message.settings.communityMgrRole.toLowerCase());
+          return (devRole && message.member.roles.has(devRole.id));
         } catch (e) {
           return false;
         }
