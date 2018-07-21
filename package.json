@@ -9,7 +9,7 @@
     "scale-down": "now scale bot.vuetifyjs.com 0 --team=vuetifyjs --token=$NOW_TOKEN",
     "deploy": "now --team=vuetifyjs --token=$NOW_TOKEN --npm",
     "alias": "now alias --team=vuetifyjs --token=$NOW_TOKEN",
-    "scale-up": "now scale bot.vuetifyjs.com 1 --team=vuetifyjs --token=$NOW_TOKEN",
+    "scale-up": "now scale bot.vuetifyjs.com 1 1 --team=vuetifyjs --token=$NOW_TOKEN",
     "unalias": "now rm vuetifybot --team=vuetifyjs --safe --yes --token=$NOW_TOKEN"
   },
   "engines": {
