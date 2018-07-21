@@ -8,5 +8,7 @@ install:
 script:
   - yarn run deploy
   - yarn run alias
+  - yarn run scale-sfo
+  - yarn run scale-bru
   - yarn run unalias
 if: branch = master AND type IN (push)
